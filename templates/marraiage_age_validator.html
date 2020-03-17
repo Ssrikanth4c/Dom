@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>marraiageAgeValidator</title>
+</head>
+<body>
+    <form action="#" id='form'>
+        <label for="gender">Gender:</label>
+        <select name="gender" id="gender">
+            <option value="">--</option>
+            <option value="M">male</option>
+            <option value="F">female</option>
+        </select>
+        <label for="year">Year:</label>
+        <input type="text" name="year" id="year">
+        <input type="submit" onclick="marriageAge()" value="submit" id='submit'>
+    </form>
+</body>
+<script>
+    function marriageAge(){
+        var gender= document.getElementById('gender').value;
+        var year= document.getElementById('year').value
+        var age= 2020-Number(year)
+        if(gender=='M'){
+            if(age>=21){
+                alert('Yes you are eligible')
+            }else{
+                alert('No you are not eligible')
+            }
+        }else if(gender=='F'){
+            if(age>=18)
+                alert('Yes you are eligible')
+            else
+                alert('No you are not eligible')
+        }
+ 
+    }
+</script>
+</html>

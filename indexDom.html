@@ -1,0 +1,95 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div>
+    <table id='table' class="tbl">
+        <tr>
+            <td>1.1</td>
+            <td>1.2</td>
+            <td>1.3</td>
+            <td>1.4</td>
+            <td>1.5</td>
+        </tr>
+        <tr>
+            <td>2.1</td>
+            <td>2.2</td>
+            <td>2.3</td>
+            <td>2.4</td>
+            <td>2.5</td>
+        </tr>
+        <tr>
+            <td>3.1</td>
+            <td>3.2</td>
+            <td>3.3</td>
+            <td>3.4</td>
+            <td>3.5</td>
+        </tr>
+        <tr>
+            <td>4.1</td>
+            <td>4.2</td>
+            <td>4.3</td>
+            <td>4.4</td>
+            <td>4.5</td>
+        </tr>
+        <tr>
+            <td>5.1</td>
+            <td>5.2</td>
+            <td>5.3</td>
+            <td>5.4</td>
+            <td>5.5</td>
+        </tr>
+    </table>
+</div>
+<div>
+    <table id="table1">
+        <tr>
+            <td>age:</td>
+            <td>
+                <label >
+                    <input type="radio" name='age' value="young" > less than 18
+                </label>
+                <label >
+                    <input type="radio" name='age' value="mature" checked> from 18 to 50
+                </label>
+                <label >
+                    <input type="radio" name='age' value="senior" > more than 60
+                </label>
+            </td>
+        </tr>
+    </table>
+</div>
+<form name="formDiv">
+    <div class="arti"></div>
+    <div class=" second arti"></div>
+</form>
+<div>
+    <p id='p1'>srikanth</p>
+    <p>sri</p>
+</div>
+<div id='pavan-p'>pavan</div>
+<div id='pavan-p'>pavan d1</div>
+<div id='pavan-p'>pavan d2</div>
+</body>
+<script>
+    for(var i=0; i< table.rows.length; i++){
+    table.rows[i].cells[i].style.backgroundColor="red"
+    }
+p1.style.background="blue";
+var pName= document.getElementById('pavan-p')
+pName.style.background="green"
+var table1= document.getElementById('table1')
+var input=table1.getElementsByTagName('input')
+console.log(input.length)
+for( var i of input){
+    console.log(i.checked+'--'+ i.value+'---'+ i.name)
+}
+
+var divForm= document.getElementsByName('formDiv')[0]
+console.log(document.getElementsByClassName('arti').length)
+// console.log(divForm)
+</script>
+</html>

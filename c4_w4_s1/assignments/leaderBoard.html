@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .mainContainer{
+            display: flex;
+            max-width: 600px;
+            margin: auto;
+            gap: 20px
+        }
+        .mainContainer > div{
+            border: 1px solid red;
+            flex: 1;
+            text-align: center;
+        }
+        .leaderBoard{
+            display: flex;
+            gap: 10px;
+           
+        }
+        .leaderBoard > div, .numberDisplay{
+            border: 1px solid red;
+            flex: 1;
+            text-align: center;
+            font-size: 20px;
+            padding: 20px;
+            margin: 20px;
+        }
+        #inputBox{
+            flex-grow: 1;
+            border: 1px solid red;
+            padding: 10px 20px;
+            font-size: 20px;
+            margin: 10px;
+        }
+        .numberPad{
+            display: grid;
+            grid-template-columns:repeat(5, auto);
+            grid-template-rows: auto auto;
+            gap: 10px 10px;
+            margin: 20px;
+        }
+        .numberPad > div{
+            border: 1px solid red;
+            font-size: 20px;
+        }
+        #submitScore{
+            font-size: 20px;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: royalblue;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="mainContainer">
+        <div class="box">
+            <h3>Leader Board </h3>
+            <div class="leaderBoard">
+                <div class="minScoreBox">Min Value</div>
+                <div class="maxScoreBox"> Max Value</div>
+            </div>
+            <div class="numberDisplay"></div>
+            <div class="numberPad">
+                <div onclick="numberPad()">1</div>
+                <div onclick="numberPad()">2</div>
+                <div onclick="numberPad()">3</div>
+                <div onclick="numberPad()">4</div>
+                <div onclick="numberPad()">5</div>
+                <div onclick="numberPad()">6</div>
+                <div onclick="numberPad()">7</div>
+                <div onclick="numberPad()">8</div>
+                <div onclick="numberPad()">9</div>
+                <div onclick="numberPad()">0</div>
+            </div>
+            <input type="text" name="inputBox" id="inputBox">
+            <button type="submit" id='submitScore'>Enter</button>
+
+        </div>
+        <div class="scoreBoard">
+            <h3> Score Board </h3>
+        </div>
+    </div>
+</body>
+<script>
+    var playerScore=[]
+    var maxScore={name:'', score:0}
+    var minScore={name:'', score:10000}
+    var currentScore=''
+    function numberPad(){
+        // console.log(event.target.textContent)
+        var number= event.target.textContent;
+        currentScore+=number
+        document.querySelector('.numberDisplay').innerHTML=currentScore
+    }
+    //get min and max score from leaderboard
+    var min=document.querySelector('.minScoreBox')
+    var max=document.querySelector('.maxScoreBox')
+    var submitBtn= document.getElementById('submitScore')
+    submitBtn.addEventListener('click',submitScore)
+    function submitScore(){
+        var playerName= document.getElementById('inputBox').value
+        var playerScoreAndName={name: playerName, score:currentScore}
+        // console.log(playerScoreAndName)
+        updateMinScore(playerScoreAndName)
+        updateMaxScore(playerScoreAndName)
+        clearBoard()
+        
+    }
+    function updateMinScore(playerScoreAndName){
+        // 1000>1 -- true 1>22
+        if(minScore["score"]> playerScoreAndName["score"]){
+            minScore= playerScoreAndName
+            min.textContent= playerScoreAndName.name+':'+ playerScoreAndName["score"]
+        }
+            // console.log(minScore["score"] +'minscore')
+    }
+    function updateMaxScore(playerScoreAndName){
+        // 0<1 -- true 1<
+        if(maxScore["score"]< playerScoreAndName["score"]){
+
+            maxScore=playerScoreAndName
+            max.textContent= playerScoreAndName.name+':'+ playerScoreAndName["score"]
+        }
+            // console.log(maxScore.score+'maxscore')
+    }
+    function clearBoard(){
+        //clear current scoreboard, name input box
+        document.querySelector('.numberDisplay').innerHTML=''
+        document.getElementById('inputBox').value=''
+        currentScore=''
+
+    }
+</script>
+</html>

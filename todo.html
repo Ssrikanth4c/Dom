@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo</title>
+    <style>
+        .TodoContainer{
+            display: flex;
+            gap: 20px;
+        }
+ 
+    </style>
+</head>
+<body>
+    <div class="TodoContainer">
+        <p>add Todo's:</p>
+        <input type="text" id='todoItem'>
+        <button id="addBtn">Add</button>
+    </div>
+    <div class="todoResult">
+
+    </div>
+</body>
+<script>
+    var dotoItem= document.getElementById("todoItem").value
+    var addBtn= document.getElementById('addBtn')
+    addBtn.addEventListener('click', addToResult)
+    
+    function addToResult(){
+
+        console.log(dotoItem)
+        var div= document.createElement('div')
+        var resultCont= document.querySelector('.todoResult')
+        
+        //add remove Button
+        var removeBtn= document.createElement('button')
+        removeBtn.
+        
+        div.append(dotoItem)
+        resultCont.append(div)
+    }
+</script>
+</html>

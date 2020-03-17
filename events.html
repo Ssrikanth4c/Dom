@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+    .title::before{
+        content: '▶ ';
+        color: green;
+    }
+</style>
+</head>
+<body>
+    <input type="submit" onclick="alert(this.value)" id='submit' value="submit"> 
+    <button id=btn> handleEvent</button> 
+    <div id="text1"> hide me</div>
+    <br>
+    <div id="slide">
+        <span class="title"> slide Text </span>
+        <ul>
+            <li>cake</li>
+            <li>Donut</li>
+            <li>Honey</li>
+        </ul>
+    </div>
+</body>
+</html>
+<script>
+// browser reads the attribute contenet and create handler function with attribute content as like below.
+// submit.onclick=function(){
+//     alert(this.value)
+// }
+function secondHandler(){
+    console.log(this.outerHTML+ '\n2 handler')
+}
+submit.onclick= secondHandler
+//  allow  multiple handlers using "addEvenListener()" 
+
+// document.addEventListener('DOMContentLoaded', function(){
+//     console.log("Dom built")
+// })
+submit.addEventListener('click', function(events){
+     console.log(events.type+'\n'+ event.target+'\n'+ event.clientX+'\n'+ event.clientY+'this'+ this.outerHTML)
+ })
+var count=1
+ document.body.addEventListener('mouseover', function(){
+     
+     console.log(event.clientX+"\tx\t"+ event.clientY+"\ty"+"\t count: "+count)
+     count++
+ })
+
+// hide text
+var hideTextBtn= document.getElementById('btn')
+var hideText= document.getElementById('text1')
+
+function hideText1(){
+    hideText.innerText=''
+}
+
+hideTextBtn.addEventListener('click', hideText1) 
+
+hideTextBtn.addEventListener('click',hideee)
+function hideee(){
+    // hideTextBtn.hidden=true
+    console.log(1)
+}
+hideTextBtn.removeEventListener('click', hideee)
+hideTextBtn.onclick=function(){
+    console.log(3)
+}
+
+// toggling menu
+slide.onclick=function(){
+    slide.children[0].hidden=true
+}
+</script>
